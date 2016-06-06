@@ -1,7 +1,7 @@
 {
-  "name": "interactive-es6",
+  "name": "interactive-brexit-quiz-results",
   "version": "1.0.0",
-  "description": "Guardian ES6 interactive template",
+  "description": "How well the readers know about the Brexit Referendum?",
   "devDependencies": {
     "bower": "^1.7.7",
     "grunt": "^0.4.5",
@@ -27,9 +27,13 @@
   "jspm": {
     "configFile": "src/js/config.js",
     "dependencies": {
+      "d3-array": "npm:d3-array@^0.7.1",
+      "d3-format": "npm:d3-format@^0.5.1",
+      "d3-request": "npm:d3-request@^0.4.7",
+      "d3-scale": "npm:d3-scale@^0.7.2",
+      "d3-selection": "npm:d3-selection@^0.7.3",
       "guardian/iframe-messenger": "github:guardian/iframe-messenger@master",
       "json": "github:systemjs/plugin-json@^0.1.0",
-      "reqwest": "github:ded/reqwest@^1.1.5",
       "text": "github:systemjs/plugin-text@^0.0.2"
     },
     "devDependencies": {

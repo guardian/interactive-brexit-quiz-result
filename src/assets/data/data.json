@@ -1,0 +1,107 @@
+[
+  {
+    "q": 0,
+    "avg": 14.527403413704779,
+    "count": 47040,
+    "r":12.6,
+    "text":"What proportion of the EU's budget does the UK contribute?"
+  },
+  {
+    "q": 1,
+    "avg": 21.563572555103974,
+    "count": 47040,
+    "r":6,
+    "text":"What percentage of the EU budget is spent on administration?"
+  },
+  {
+    "q": 2,
+    "avg": 54.77142857142857,
+    "count": 47040,
+    "r":44,
+    "text":"What proportion of UK exports (of goods and services) were with the EU in 2014?"
+  },
+  {
+    "q": 3,
+    "avg": 48.1688137755102,
+    "count": 47040,
+    "r":53,
+    "text":"What proportion of UK imports (of goods and services) were with the EU in 2014?"
+  },
+  {
+    "q": 4,
+    "avg": 2782.440820886563,
+    "count": 47040,
+    "r":2086,
+    "text":"How many legislative acts (regulations, directives and decisions) did the EU adopt in 2015?"
+  },
+  {
+    "q": 5,
+    "avg": 17.021640780141063,
+    "count": 47040,
+    "r":4.8,
+    "text":"What proportion of jobseeker allowance recipients are EU nationals?"
+  },
+  {
+    "q": 6,
+    "avg": 29041.697534013605,
+    "count": 47040,
+    "r":30000,
+    "text":"Roughly how many UK citizens claim unemployment benefits in other EU countries?"
+  },
+  {
+    "q": 7,
+    "avg": 40316.007886904765,
+    "count": 47040,
+    "r":84000,
+    "text":"How many EU families, resident in the UK for four years or less, claimed tax credits in 2014?"
+  },
+  {
+    "q": 8,
+    "avg": 30716.655144557822,
+    "count": 47040,
+    "r":32408,
+    "text":"How many children resident in other EU states receive child benefit payments from the UK?"
+  },
+  {
+    "q": 9,
+    "avg": 360541.6750637755,
+    "count": 47040,
+    "r":124575,
+    "text":"How many EU students are there in UK universities?"
+  },
+  {
+    "q": 10,
+    "avg": 31.06675646422946,
+    "count": 47039,
+    "r":4.4,
+    "text":"What proportion of NHS staff are from within the EU?"
+  },
+  {
+    "q": 11,
+    "avg": 48.60388188524416,
+    "count": 47039,
+    "r":32,
+    "text":"What percentage of Premier League footballers are EU citizens from outside the UK?"
+  },
+  {
+    "q": 12,
+    "avg": 277619.67556708265,
+    "count": 47039,
+    "r":323000,
+    "text":"In 2015, how many more immigrants to the UK were there than emigrants?"
+  },
+  {
+    "q": 13,
+    "avg": 4.895065796466762,
+    "count": 47039,
+    "r":7,
+    "text":"For how long will the \"emergency brake\" period negotiated by David Cameron be in place?"
+  },
+  {
+    "q": 14,
+    "avg": 54.571452867894045,
+    "count": 47038,
+    "r":65,
+    "text":"What percentage of Britons are sceptical about the EU? (ie either want to leave it or stay in a EU with reduced powers)"
+  }
+]
