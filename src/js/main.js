@@ -36,7 +36,10 @@ export function init(el, context, config, mediator) {
 
             })
 
-            new Answers(questions,{
+            new Answers(questions.sort((a,b)=>{
+                //console.log(Math.abs(b.perc.diff) - Math.abs(a.perc.diff))
+                return Math.abs(b.perc.diff) - Math.abs(a.perc.diff)
+            }),{
                 container:el.querySelector(".interactive-container")
             })
             

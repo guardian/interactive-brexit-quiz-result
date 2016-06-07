@@ -12,14 +12,16 @@
 
 		position:relative;
 		
-		@include fs-headline(3);
+		@include fs-headline(1);
+		font-size:20px;
+		line-height:24px;
 		span.the-readers {
 			display: block;
 		}
 
 
 		@include mq(iframe) {
-	        @include fs-headline(4);
+	        //@include fs-headline(4);
 	
 			span.the-readers {
 				display: inline;

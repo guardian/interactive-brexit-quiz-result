@@ -18,7 +18,7 @@ window.init = function init(el, config) {
     json(dataSrc, (json) => {
             let questions = json.sheets.questions.filter(d=>d.selection!=="");
 
-            console.log(questions)
+            //console.log(questions)
 
             questions.forEach((q,i)=>{
                 let p=(data[i].avg - q.min)/(q.max-q.min),
@@ -36,7 +36,10 @@ window.init = function init(el, config) {
 
             })
 
-            new Answers(questions,{
+            new Answers(questions.sort((a,b)=>{
+                //console.log(Math.abs(b.perc.diff) - Math.abs(a.perc.diff))
+                return Math.abs(a.perc.diff) - Math.abs(b.perc.diff)
+            }),{
                 container:el.querySelector(".interactive-container")
             })
             

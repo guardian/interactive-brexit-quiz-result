@@ -15,7 +15,7 @@ from 'd3-array';
 
 export default function Answers(data,options) {
 
-	console.log(data,options);
+	//console.log(data,options);
 //var clrScale = { name: 'newsSupport2', selected: '#c5ffff', scale: ['#000026','#00284e','#00507b','#197caa','#5babdc','#90ddff','#c5ffff'] };
     // let scale=scaleLinear().range([0,100]).domain([-0.5,0.5]),
     //     scaleWidth=scaleLinear().range([0,100]).domain([0,0.5]),
@@ -77,12 +77,12 @@ export default function Answers(data,options) {
                 }
                 
                 if(Math.abs(d.perc.diff)<=0.02) {
-                    letters="<b>o</b><b>n</b>";
-                    word=" the money.";
+                    letters="<b>i</b><b>n</b>";
+                    word=" the ballpark.";
                 }
                 if(Math.abs(d.perc.diff)<=0.01) {
-                    letters="<b>o</b>";
-                    word="n the money.";
+                    letters="<b>i</b>";
+                    word="n the ballpark.";
                 }
 
                 //word+=" "+Math.abs(d.perc.diff);
@@ -96,20 +96,17 @@ export default function Answers(data,options) {
 
                 let figures=`The actual answer is ${getNumber(d.answer,d.symbol)}. The average response from people taking the quiz was ${getNumber(d.avg,d.symbol)}.`;
 
+
+                return "<span class=\"question\">"+d.question+"</span><span class=\"the-readers\">The readers were </span><b>"+letters+"</b>"+word+pp+" "+(figures || "");
+                //WITH QUESTION NUMBER
                 return "<span class=\"question\"><span class=\"num\">"+(i+1)+".</span> "+d.question+"</span><span class=\"the-readers\">The readers were </span><b>"+letters+"</b>"+word+pp+" "+(figures || "");
             })
-            // .select("b")
-            //     .style("background-color",d=>{
-            //         if(d.perc.diff<0) {
-            //             return colorScaleUnder(Math.abs(d.perc.diff))    
-            //         }
-            //         return colorScaleOver(Math.abs(d.perc.diff))
-            //     })
+            
 
 
 
     function getNumber(value,symbol) {
-        console.log(value,symbol)
+        //console.log(value,symbol)
         if(symbol==="%") {
             return format(",.0%")((value/100));
         }
