@@ -3,19 +3,12 @@ import {
     selectAll
 }
 from 'd3-selection';
-
-import {
-    scaleLinear,
-    scaleQuantize
-}
-from 'd3-scale';
 import {
     format
 }
 from 'd3-format';
 import {
-    range,
-    mean
+    range
 }
 from 'd3-array';
 
@@ -42,10 +35,10 @@ export default function Answers(data,options) {
     // answer.append("h3")
     //         .html((d,i)=>(`<span>${i+1}</span>${d.question}`))
 
-    let MEAN=mean(data,d=>{
-        return Math.abs(d.perc.diff)
-    });
-    console.log("MEAN",MEAN)
+    // let MEAN=mean(data,d=>{
+    //     return Math.abs(d.perc.diff)
+    // });
+    // console.log("MEAN",MEAN)
 
     answer.append("h2")
             .classed("over",d=>d.perc.diff>0)
@@ -56,13 +49,16 @@ export default function Answers(data,options) {
                     word=d.perc.diff>0?"&nbsp;over":"&nbsp;under"
                 //console.log(i,n,d.perc.diff*100)
                 
-                let pp=" "+"by "+format(",.2")(Math.abs(d.perc.diff)*100)+" percentage points";
+                let pp=" "+"by "+format(",.2")(Math.abs(d.perc.diff)*100)+" percentage points.";
 
                 let letters=range(n-5).map(v=>"<b>"+char+"</b>").join('');
 
 
                 letters="<b>w</b>"+letters+"<b>y</b><b>&nbsp;</b><b>o</b><b>f</b><b>f</b>";
                 word=","
+                if(d.npp) {
+                    word=".";
+                }
 
                 if(Math.abs(d.perc.diff)<=0.05) {
                     letters="<b>o</b><b>f</b><b>f</b><b>&nbsp;</b><b>&nbsp;</b>";
@@ -76,17 +72,17 @@ export default function Answers(data,options) {
 
                 if(Math.abs(d.perc.diff)<=0.03) {
                     letters="<b>o</b><b>f</b><b>f</b>";
-                    word=" the money";
+                    word=" the money.";
                     pp="";
                 }
                 
                 if(Math.abs(d.perc.diff)<=0.02) {
                     letters="<b>o</b><b>n</b>";
-                    word=" the money";
+                    word=" the money.";
                 }
                 if(Math.abs(d.perc.diff)<=0.01) {
                     letters="<b>o</b>";
-                    word="n the money";
+                    word="n the money.";
                 }
 
                 //word+=" "+Math.abs(d.perc.diff);
@@ -95,11 +91,12 @@ export default function Answers(data,options) {
 
                 if(d.npp) {
                     pp="";
+                    //word="";
                 }
 
                 let figures=`The actual answer is ${getNumber(d.answer,d.symbol)}. The average response from people taking the quiz was ${getNumber(d.avg,d.symbol)}.`;
 
-                return "<span class=\"question\"><span class=\"num\">"+(i+1)+".</span> "+d.question+"</span><span class=\"the-readers\">The readers were </span><b>"+letters+"</b>"+word+pp+". "+(figures || "");
+                return "<span class=\"question\"><span class=\"num\">"+(i+1)+".</span> "+d.question+"</span><span class=\"the-readers\">The readers were </span><b>"+letters+"</b>"+word+pp+" "+(figures || "");
             })
             // .select("b")
             //     .style("background-color",d=>{
