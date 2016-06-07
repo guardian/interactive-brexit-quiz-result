@@ -12,13 +12,13 @@
 
 		position:relative;
 		
-		@include fs-headline(2);
+		@include fs-headline(3);
 		span.the-readers {
 			display: block;
 		}
 
 
-		@include mq(tablet) {
+		@include mq(iframe) {
 	        @include fs-headline(4);
 	
 			span.the-readers {
@@ -29,11 +29,14 @@
 
 		span.num {
 			display: inline-block;
-			//min-width:25px;
-			//text-align:right;
+			color:#bdbdbd;
+			font-size:0.8em;
 		}
+
 		span.question {
 			color:#767676;
+			display: block;
+			margin-bottom:10px;
 		}
 		
 		b {

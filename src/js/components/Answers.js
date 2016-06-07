@@ -58,15 +58,20 @@ export default function Answers(data,options) {
                 
                 let pp=" "+"by "+format(",.2")(Math.abs(d.perc.diff)*100)+" percentage points";
 
-                let letters=range(n-2).map(v=>"<b>"+char+"</b>").join('');
+                let letters=range(n-5).map(v=>"<b>"+char+"</b>").join('');
 
 
-                letters="<b>w</b>"+letters+"<b>y</b>";
-                word=" off,"
+                letters="<b>w</b>"+letters+"<b>y</b><b>&nbsp;</b><b>o</b><b>f</b><b>f</b>";
+                word=","
+
+                if(Math.abs(d.perc.diff)<=0.05) {
+                    letters="<b>o</b><b>f</b><b>f</b><b>&nbsp;</b><b>&nbsp;</b>";
+                    word=" ";
+                }
 
                 if(Math.abs(d.perc.diff)<=0.04) {
-                    letters="<b>o</b><b>f</b><b>f</b><b>&nbsp;</b>";
-                    word=" the money";
+                    letters="<b>o</b><b>f</b><b>f</b>&nbsp;";
+                    word=" ";
                 }
 
                 if(Math.abs(d.perc.diff)<=0.03) {
@@ -84,7 +89,7 @@ export default function Answers(data,options) {
                     word="n the money";
                 }
 
-                
+                //word+=" "+Math.abs(d.perc.diff);
 
                 
 
@@ -92,7 +97,9 @@ export default function Answers(data,options) {
                     pp="";
                 }
 
-                return "<span class=\"num\">"+(i+1)+"</span> <span class=\"question\">"+d.question+"</span><br/><span class=\"the-readers\">The readers were </span><b>"+letters+"</b>"+word+pp+". "+(d.comment || "");
+                let figures=`The actual answer is ${getNumber(d.answer,d.symbol)}. The average response from people taking the quiz was ${getNumber(d.avg,d.symbol)}.`;
+
+                return "<span class=\"question\"><span class=\"num\">"+(i+1)+".</span> "+d.question+"</span><span class=\"the-readers\">The readers were </span><b>"+letters+"</b>"+word+pp+". "+(figures || "");
             })
             // .select("b")
             //     .style("background-color",d=>{
@@ -104,58 +111,12 @@ export default function Answers(data,options) {
 
 
 
-    return;
-    // let line=answer.append("div")
-    //         .attr("class","line-container")
-
-    // line.append("span")
-    //         .attr("class","line")
-    //         .style("left",d=>{
-    //             if(d.perc.diff<0) {
-    //                 return scale(d.perc.diff)+"%"
-    //             }
-    //             return scale(0)+"%";
-    //         })
-    //         .style("width",d=>{
-    //             return (Math.abs(scale(d.perc.diff)-50)+0.01)+"%"
-    //         })
-
-
-    // line.append("span")
-    //         .attr("class","zero")
-    //         .style("left",d=>{
-    //             return scale(0)+"%"
-    //         })
-
-    // line.append("span")
-    //         .attr("class","avg")
-    //         .style("left",d=>{
-    //             return scale(d.perc.diff)+"%"
-    //         })
-
-    // line.append("span")
-    //         .attr("class","zero")
-    //         .style("left",d=>{
-    //             return scale(0)+"%"
-    //         })
-
-    // line.append("p")
-    //         .classed("right",d=>d.perc.diff<0)
-    //         .classed("left",d=>d.perc.diff>=0)
-    //         .style("left",d=>{
-    //             if(d.perc.diff<0) {
-    //                 return 0;
-    //             }
-    //             return scale(d.perc.diff)+"%"
-    //         })
-    //         .style("width",d=>{
-    //             if(d.perc.diff<0) {
-    //                 return scale(d.perc.diff)+"%"
-    //             }
-    //             return "100%";
-    //         })
-    //         .text(d=>{
-    //             return format("+,.2%")(d.perc.diff);
-    //         })
+    function getNumber(value,symbol) {
+        console.log(value,symbol)
+        if(symbol==="%") {
+            return format(",.0%")((value/100));
+        }
+        return format(",.0d")(value);
+    }
 
 }
