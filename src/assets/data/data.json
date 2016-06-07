@@ -4,21 +4,24 @@
     "avg": 14.527403413704779,
     "count": 47040,
     "r":12.6,
-    "text":"What proportion of the EU's budget does the UK contribute?"
+    "text":"What proportion of the EU's budget does the UK contribute?",
+    "comment":"The readers did quite well, they thought the proportion is around 15%, in fact it is 12.6%."
   },
   {
     "q": 1,
     "avg": 21.563572555103974,
     "count": 47040,
     "r":6,
-    "text":"What percentage of the EU budget is spent on administration?"
+    "text":"What percentage of the EU budget is spent on administration?",
+    "comment":"The percentage spend on administration is only 6%, on average the answer was instead close to 22%."
   },
   {
     "q": 2,
     "avg": 54.77142857142857,
     "count": 47040,
     "r":44,
-    "text":"What proportion of UK exports (of goods and services) were with the EU in 2014?"
+    "text":"What proportion of UK exports (of goods and services) were with the EU in 2014?",
+    "comment":"The proportion of UK exports with EU in 2014 were 44%. On average the answer was 54%."
   },
   {
     "q": 3,
@@ -32,7 +35,9 @@
     "avg": 2782.440820886563,
     "count": 47040,
     "r":2086,
-    "text":"How many legislative acts (regulations, directives and decisions) did the EU adopt in 2015?"
+    "text":"How many legislative acts (regulations, directives and decisions) did the EU adopt in 2015?",
+    "comment":"The EU adopted 2,086 legislative acts in 2015. On average the readers answered very well, guessing 2,785 acts.",
+    "npp":1
   },
   {
     "q": 5,
@@ -46,7 +51,9 @@
     "avg": 29041.697534013605,
     "count": 47040,
     "r":30000,
-    "text":"Roughly how many UK citizens claim unemployment benefits in other EU countries?"
+    "text":"Roughly how many UK citizens claim unemployment benefits in other EU countries?",
+    "comment":"The readers did very well here. The number of UK citizens claiming unemployment benefits in other EU countries is 30,000. On average the readers answered 29,000.",
+    "npp":1
   },
   {
     "q": 7,
@@ -95,7 +102,9 @@
     "avg": 4.895065796466762,
     "count": 47039,
     "r":7,
-    "text":"For how long will the \"emergency brake\" period negotiated by David Cameron be in place?"
+    "text":"For how long will the \"emergency brake\" period negotiated by David Cameron be in place?",
+    "comment":"The readers thought the emergency brake would be in place for four years. In fact, if applied, it would be in place for seven years.",
+    "npp":1
   },
   {
     "q": 14,

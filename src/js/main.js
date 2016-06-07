@@ -31,6 +31,8 @@ export function init(el, context, config, mediator) {
                     real:r,
                     diff:p-r
                 };
+                q.comment=data[i].comment;
+                q.npp=data[i].npp;
 
             })
 

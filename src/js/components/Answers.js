@@ -14,7 +14,8 @@ import {
 }
 from 'd3-format';
 import {
-    range
+    range,
+    mean
 }
 from 'd3-array';
 
@@ -41,25 +42,45 @@ export default function Answers(data,options) {
     // answer.append("h3")
     //         .html((d,i)=>(`<span>${i+1}</span>${d.question}`))
 
+    let MEAN=mean(data,d=>{
+        return Math.abs(d.perc.diff)
+    });
+    console.log("MEAN",MEAN)
+
     answer.append("h2")
             .classed("over",d=>d.perc.diff>0)
             .classed("under",d=>d.perc.diff<0)
             .html((d,i)=>{
-                let n=(Math.floor(Math.abs(d.perc.diff)*100)),
-                    char=d.perc.diff>0?"o":"u",
-                    word=d.perc.diff>0?"ver":"nder"
-                console.log(i,n,d.perc.diff*100)
-                let letters=range(n).map(v=>char).join('');
+                let n=(Math.ceil(Math.abs(d.perc.diff)*100)),
+                    char=d.perc.diff>0?"&nbsp;":"&nbsp;",
+                    word=d.perc.diff>0?"&nbsp;over":"&nbsp;under"
+                //console.log(i,n,d.perc.diff*100)
+                let letters=range(n).map(v=>"<b>"+char+"</b>").join('');
 
-                return "<span class=\"num\">"+(i+1)+"</span> <span class=\"question\">"+d.question+"</span><br/>The question was <b>"+char+letters+"</b><i>"+word+"estimated</i> by "+format(",.2")(Math.abs(d.perc.diff)*100)+" percentage points.";
+                
+
+                if(Math.abs(d.perc.diff)<0.1) {
+                    word=" slightly "+word;
+                }
+                if(Math.abs(d.perc.diff)>=0.2) {
+                    word=" badly "+word;
+                }
+
+                let pp="by "+format(",.2")(Math.abs(d.perc.diff)*100)+" percentage points";
+
+                if(d.npp) {
+                    pp="";
+                }
+
+                return "<span class=\"num\">"+(i+1)+"</span> <span class=\"question\">"+d.question+"</span><br/>The question was <b>"+letters+"</b><i>"+word+"estimated</i> "+pp+". "+(d.comment || "");
             })
-            .select("b")
-                .style("background-color",d=>{
-                    if(d.perc.diff<0) {
-                        return colorScaleUnder(Math.abs(d.perc.diff))    
-                    }
-                    return colorScaleOver(Math.abs(d.perc.diff))
-                })
+            // .select("b")
+            //     .style("background-color",d=>{
+            //         if(d.perc.diff<0) {
+            //             return colorScaleUnder(Math.abs(d.perc.diff))    
+            //         }
+            //         return colorScaleOver(Math.abs(d.perc.diff))
+            //     })
 
 
 

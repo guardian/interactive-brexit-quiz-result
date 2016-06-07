@@ -9,6 +9,9 @@
 		display: inline-block;
 		margin:5px 0;
 		margin-bottom:15px;
+
+		position:relative;
+
 		@include fs-headline(4);
 
 		span.num {
@@ -22,18 +25,23 @@
 		
 		b {
 			background-color:#ddd;
-			padding:4px 0 4px 4px;
+			padding:4px 0;
 			border-radius:5px;
-			margin-right:1px;
-			letter-spacing: 1px;
+			//margin-right:1px;
+			//letter-spacing: 1px;
 			color:rgba(0,0,0,0.5);
+			b {
+				display: inline-block;
+				width:15px;
+				background-color:transparent !important;
+			}
 		}
 		&.under b {
-			background-color:#9c0000;
+			background-color:#d61d00;
 			
 		}
 		&.over b {
-			background-color:#c78b00;
+			background-color:#197caa;
 		}
 		i {
 			font-weight:  bold;
