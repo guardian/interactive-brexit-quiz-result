@@ -26,9 +26,7 @@ export default function Answers(data,options) {
                     .append("div")
                     .attr("class","answers")
 
-    answers.append("h1")
-                .html(options.title)
-
+   
     let answer=answers.selectAll("div.answer")
             .data(data)
             .enter()
@@ -114,7 +112,7 @@ export default function Answers(data,options) {
         if(symbol==="%") {
             return format(",.0%")((value/100));
         }
-        return format(",.0d")(value);
+        return format(",.0d")(value)+((symbol!=="")?(" "+symbol):"");
     }
 
 }

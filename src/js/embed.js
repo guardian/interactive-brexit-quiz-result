@@ -12,6 +12,17 @@ window.init = function init(el, config) {
 
     el.innerHTML = mainHTML;
 
+    let f=[
+        function(d){return Math.abs(d)<=0.02},
+        function(d){return Math.abs(d)>0.02 && Math.abs(d)<=0.05},
+        function(d){return Math.abs(d)>0.05}
+    ];
+
+    let q=0,
+        query=window.location.search.replace("?","").split("=");
+
+    let FUNC=(query[0]==="v"?(+query[1]):0)
+
     let dataKey = "16hTJg_J1H1V_iT3bN5xTN1ZTQ0st4ybAYuZq8GAEobw";
     let dataSrc = "https://interactive.guim.co.uk/docsdata/" + dataKey + ".json";
 
@@ -37,33 +48,12 @@ window.init = function init(el, config) {
             })
 
             new Answers(questions.filter(d=>{
-                return Math.abs(d.perc.diff)<=0.02
+                return f[FUNC](d.perc.diff)
             }).sort((a,b)=>{
                 //console.log(Math.abs(b.perc.diff) - Math.abs(a.perc.diff))
                 return Math.abs(a.perc.diff) - Math.abs(b.perc.diff)
             }),{
-                container:el.querySelector(".interactive-container"),
-                title:"In the ballpark"
-            })
-
-            new Answers(questions.filter(d=>{
-                return Math.abs(d.perc.diff)>0.02 && Math.abs(d.perc.diff)<=0.05
-            }).sort((a,b)=>{
-                //console.log(Math.abs(b.perc.diff) - Math.abs(a.perc.diff))
-                return Math.abs(a.perc.diff) - Math.abs(b.perc.diff)
-            }),{
-                container:el.querySelector(".interactive-container"),
-                title:"Off"
-            })
-
-            new Answers(questions.filter(d=>{
-                return Math.abs(d.perc.diff)>0.05
-            }).sort((a,b)=>{
-                //console.log(Math.abs(b.perc.diff) - Math.abs(a.perc.diff))
-                return Math.abs(a.perc.diff) - Math.abs(b.perc.diff)
-            }),{
-                container:el.querySelector(".interactive-container"),
-                title:"Way off"
+                container:el.querySelector(".interactive-container")
             })
             
 
