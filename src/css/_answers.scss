@@ -1,8 +1,8 @@
-#answers {
+.answers {
 	width:100%;
-	h3 {
-		@include fs-headline(2);
-
+	
+	h1 {
+		@include fs-headline(4);
 	}
 
 	h2 {
@@ -38,7 +38,7 @@
 		span.question {
 			color:#767676;
 			display: block;
-			margin-bottom:10px;
+			margin-bottom:5px;
 		}
 		
 		b {

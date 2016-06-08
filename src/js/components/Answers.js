@@ -24,7 +24,10 @@ export default function Answers(data,options) {
 
     let answers=select(options.container)
                     .append("div")
-                    .attr("id","answers")
+                    .attr("class","answers")
+
+    answers.append("h1")
+                .html(options.title)
 
     let answer=answers.selectAll("div.answer")
             .data(data)
@@ -44,12 +47,13 @@ export default function Answers(data,options) {
             .classed("over",d=>d.perc.diff>0)
             .classed("under",d=>d.perc.diff<0)
             .html((d,i)=>{
-                let n=(Math.ceil(Math.abs(d.perc.diff)*100)),
+                let abs=Math.abs(d.perc.diff),
+                    n=(Math.ceil(abs*100)),
                     char="a",//d.perc.diff>0?"&nbsp;":"&nbsp;",
                     word=d.perc.diff>0?"&nbsp;over":"&nbsp;under"
                 //console.log(i,n,d.perc.diff*100)
                 
-                let pp=" "+"by "+format(",.2")(Math.abs(d.perc.diff)*100)+" percentage points.";
+                let pp=" "+"by "+format(",.2")(abs*100)+" percentage points.";
 
                 let letters=range(n-5).map(v=>"<b>"+char+"</b>").join('');
 
@@ -60,27 +64,27 @@ export default function Answers(data,options) {
                     word=".";
                 }
 
-                if(Math.abs(d.perc.diff)<=0.05) {
+                if(abs<=0.05) {
                     letters="<b>o</b><b>f</b><b>f</b><b>&nbsp;</b><b>&nbsp;</b>";
                     word=" ";
                 }
 
-                if(Math.abs(d.perc.diff)<=0.04) {
+                if(abs<=0.04) {
                     letters="<b>o</b><b>f</b><b>f</b>&nbsp;";
                     word=" ";
                 }
 
-                if(Math.abs(d.perc.diff)<=0.03) {
+                if(abs<=0.03) {
                     letters="<b>o</b><b>f</b><b>f</b>";
                     word=" the money.";
                     pp="";
                 }
                 
-                if(Math.abs(d.perc.diff)<=0.02) {
+                if(abs<=0.02) {
                     letters="<b>i</b><b>n</b>";
                     word=" the ballpark.";
                 }
-                if(Math.abs(d.perc.diff)<=0.01) {
+                if(abs<=0.01) {
                     letters="<b>i</b>";
                     word="n the ballpark.";
                 }

@@ -36,11 +36,34 @@ window.init = function init(el, config) {
 
             })
 
-            new Answers(questions.sort((a,b)=>{
+            new Answers(questions.filter(d=>{
+                return Math.abs(d.perc.diff)<=0.02
+            }).sort((a,b)=>{
                 //console.log(Math.abs(b.perc.diff) - Math.abs(a.perc.diff))
                 return Math.abs(a.perc.diff) - Math.abs(b.perc.diff)
             }),{
-                container:el.querySelector(".interactive-container")
+                container:el.querySelector(".interactive-container"),
+                title:"In the ballpark"
+            })
+
+            new Answers(questions.filter(d=>{
+                return Math.abs(d.perc.diff)>0.02 && Math.abs(d.perc.diff)<=0.05
+            }).sort((a,b)=>{
+                //console.log(Math.abs(b.perc.diff) - Math.abs(a.perc.diff))
+                return Math.abs(a.perc.diff) - Math.abs(b.perc.diff)
+            }),{
+                container:el.querySelector(".interactive-container"),
+                title:"Off"
+            })
+
+            new Answers(questions.filter(d=>{
+                return Math.abs(d.perc.diff)>0.05
+            }).sort((a,b)=>{
+                //console.log(Math.abs(b.perc.diff) - Math.abs(a.perc.diff))
+                return Math.abs(a.perc.diff) - Math.abs(b.perc.diff)
+            }),{
+                container:el.querySelector(".interactive-container"),
+                title:"Way off"
             })
             
 
