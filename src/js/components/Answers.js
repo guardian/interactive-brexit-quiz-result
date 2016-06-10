@@ -90,14 +90,13 @@ export default function Answers(data,options) {
 
                 //word+=" "+Math.abs(d.perc.diff);
 
-                
-
                 if(d.npp) {
                     pp="";
                     //word="";
                 }
 
-                let figures=`The actual answer is ${getNumber(d.answer,d.symbol)}. The average response from people taking the quiz was ${getNumber(d.avg,d.symbol)}.`;
+                let figures="The actual answer is "+getNumber(d.answer,d.symbol)+". ";
+                figures+="The average response from people taking the quiz was "+getNumber(d.avg,d.symbol)+".";
 
 
                 return "<span class=\"question\">"+d.question+"</span><span class=\"the-readers\">The readers were </span><b>"+letters+"</b>"+word+pp+" "+(figures || "");
@@ -109,11 +108,27 @@ export default function Answers(data,options) {
 
 
     function getNumber(value,symbol) {
+        
         //console.log(value,symbol)
+
+        if(symbol.indexOf("years")>-1) {
+
+            if(value==7) {
+                return "seven years";
+            }
+            if(Math.round(value)==5) {
+                return "five years";
+            }
+        }
+
         if(symbol==="%") {
             return format(",.0%")((value/100));
         }
         return format(",.0d")(value)+((symbol!=="")?(" "+symbol):"");
     }
 
+    function getNumber2(value,symbol) {
+        console.log(value,symbol)
+        return 0;
+    }
 }

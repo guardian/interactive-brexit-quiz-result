@@ -29,9 +29,18 @@ window.init = function init(el, config) {
     json(dataSrc, (json) => {
             let questions = json.sheets.questions.filter(d=>d.selection!=="");
 
-            //console.log(questions)
+            
 
             questions.forEach((q,i)=>{
+
+                if(i===4) {
+                    q.max = q.max*1.4;
+                }
+
+                if(i===13) {
+                    q.max = q.max*2.9;
+                }
+
                 let p=(data[i].avg - q.min)/(q.max-q.min),
                     r=(data[i].r - q.min)/(q.max-q.min);
                 //console.log(p,r,data[i].r)
@@ -45,6 +54,7 @@ window.init = function init(el, config) {
                 q.comment=data[i].comment;
                 q.npp=data[i].npp;
 
+               
             })
 
             new Answers(questions.filter(d=>{
