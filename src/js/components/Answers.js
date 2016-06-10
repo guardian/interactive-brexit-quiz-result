@@ -46,7 +46,7 @@ export default function Answers(data,options) {
             .classed("under",d=>d.perc.diff<0)
             .html((d,i)=>{
                 let abs=Math.abs(d.perc.diff),
-                    n=(Math.ceil(abs*100)),
+                    n=(Math.round(abs*100)),
                     char="a",//d.perc.diff>0?"&nbsp;":"&nbsp;",
                     word=d.perc.diff>0?"&nbsp;over":"&nbsp;under"
                 //console.log(i,n,d.perc.diff*100)
@@ -55,6 +55,7 @@ export default function Answers(data,options) {
 
                 let letters=range(n-5).map(v=>"<b>"+char+"</b>").join('');
 
+                //console.log(n,letters)
 
                 letters="<b>w</b>"+letters+"<b>y</b><b>&nbsp;</b><b>o</b><b>f</b><b>f</b>";
                 word=","
